@@ -25,6 +25,7 @@ bin/
 # Secrets
 firebase-service-account.json
 r2.properties
+db.properties
 
 # SSL truststore (each dev provides their own)
 ca-truststore.jks
@@ -40,3 +41,6 @@ opencode.json
 persistence.xml 
 
 .impeccable/
+
+# graphify knowledge graph output
+graphify-out/

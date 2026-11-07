@@ -5,6 +5,7 @@
     'https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js',
     'https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js',
     '/frontend/utils/constants.js',
+    '/frontend/utils/local-config.js',
     '/frontend/components/popup.js',
     '/frontend/services/api.js',
     '/frontend/services/authService.js'

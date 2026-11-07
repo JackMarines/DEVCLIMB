@@ -8,6 +8,12 @@
   <packaging>war</packaging>
   <name>DevClimb Backend</name>
 
+  <properties>
+    <!-- Thư mục cài Tomcat 11. Nếu cài chỗ khác: mvn cargo:run -Dtomcat.home="D:\tomcat11" -->
+    <tomcat.home>C:\Program Files\Apache Software Foundation\Tomcat 11.0</tomcat.home>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>com.mysql</groupId>
@@ -94,11 +100,11 @@
         <configuration>
           <container>
             <containerId>tomcat11x</containerId>
-            <home>C:\Program Files\Apache Software Foundation\Tomcat 11.0</home>
+            <home>${tomcat.home}</home>
           </container>
           <configuration>
             <type>existing</type>
-            <home>C:\Program Files\Apache Software Foundation\Tomcat 11.0</home>
+            <home>${tomcat.home}</home>
           </configuration>
           <deployables>
             <deployable>

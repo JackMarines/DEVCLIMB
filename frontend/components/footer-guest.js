@@ -30,7 +30,7 @@
             '<span class="footer-heading">INFRASTRUCTURE</span>' +
             '<span>Powered by Judge0</span>' +
             '<span>Firebase Authentication</span>' +
-            '<span>Hosted on Cloudflare</span>' +
+            '<span>Storage on Cloudflare R2</span>' +
           '</div>' +
 
 

@@ -140,6 +140,44 @@ Getting Started
   [Screenshot: Terminal running mvn cargo:run]
 
 
+Run Locally (branch feature/local-setup, for SOF309)
+----------------------------------------------------
+  This branch runs everything on your own machine instead of devclimb.online.
+  It still uses the shared Aiven DB, Firebase, Judge0 CE and Cloudflare R2,
+  so keep your existing config files (persistence.xml, constants.js,
+  firebase-service-account.json, r2.properties, ca-truststore.jks).
+
+  1. git fetch && git switch feature/local-setup
+
+  2. (Optional) Put the DB login in a gitignored file instead of
+     persistence.xml, so the password can never be committed:
+       copy backend/src/main/resources/db.properties.example
+         -> backend/src/main/resources/db.properties  (fill in values)
+     If db.properties is missing, persistence.xml is used as before.
+
+  3. Backend (Tomcat 11 on port 8080):
+       mvn clean package cargo:run -f backend/pom.xml
+     Tomcat installed somewhere else?
+       mvn clean package cargo:run -f backend/pom.xml -Dtomcat.home="D:\path\to\Tomcat 11.0"
+
+  4. Frontend (port 5500) - serve the REPO ROOT, not the frontend folder,
+     because pages use absolute /frontend/... paths:
+       npx http-server . -p 5500 -c-1
+       (or: python -m http.server 5500, or VS Code Live Server on port 5500
+        with the repo root as the workspace)
+
+  5. Open http://localhost:5500/frontend/index.html
+     Use "localhost" (not 127.0.0.1) so Firebase Google/GitHub sign-in works.
+
+  frontend/utils/local-config.js points API_BASE at
+  http://<same host>:8080/devclimb-backend/api/v1 (loaded right after
+  constants.js by core.js). Change the port there if your Tomcat differs.
+
+  Troubleshooting: every API call returns 500 and the Tomcat log says
+  "Communications link failure" -> the Aiven DB is unreachable (free Aiven
+  services power off when idle; power it back on in the Aiven console).
+
+
 Project Layout
 --------------
 

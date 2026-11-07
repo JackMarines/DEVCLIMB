@@ -16,12 +16,10 @@ import java.util.List;
 @WebFilter("/*")
 public class CorsFilter implements Filter {
 
-    // Danh sách origin được phép (frontend)
+    // Danh sách origin được phép (frontend chạy local)
     private static final List<String> ALLOWED_ORIGINS = Arrays.asList(
         "http://localhost:5500",
-        "http://127.0.0.1:5500",
-        "https://devclimb.online",
-        "https://api.devclimb.online"
+        "http://127.0.0.1:5500"
     );
 
     // Các đường dẫn luôn được phép truy cập dù đang bảo trì
