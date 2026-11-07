@@ -51,7 +51,8 @@ public class PublicAnnouncementController extends HttpServlet {
 
         Object[] row = announcementDao.findLatestRecentWithAuthor();
         if (row == null) {
-            ResponseUtil.success(resp, Map.of("data", null));
+            // Map.of không nhận giá trị null -> dùng singletonMap để trả {"data": null}
+            ResponseUtil.success(resp, java.util.Collections.singletonMap("data", null));
             return;
         }
 
