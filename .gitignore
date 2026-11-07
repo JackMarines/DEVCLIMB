@@ -41,6 +41,8 @@ opencode.json
 persistence.xml 
 
 .impeccable/
+# impeccable live-preview server state (pid/port/token, sessions, annotations)
+.impeccable/live/
 
 # graphify knowledge graph output
 graphify-out/
